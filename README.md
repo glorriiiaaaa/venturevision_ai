@@ -84,7 +84,7 @@ This will:
 streamlit run app.py
 ```
 
-Open your browser at **https://venturevisionai-mqldiaaanebmf5pka2neha.streamlit.app/Model_Performance**
+Open your browser at **https://venturevisionai-mqldiaaanebmf5pka2neha.streamlit.app/**
 
 ---
 
