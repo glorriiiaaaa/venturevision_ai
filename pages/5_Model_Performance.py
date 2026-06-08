@@ -15,9 +15,11 @@ from utils.model_utils import (
     plot_model_comparison, plot_feature_importance,
 )
 from utils.preprocessing import load_transformers
+from utils.theme import apply_theme
 from sklearn.metrics import classification_report
 
 st.set_page_config(page_title="Model Performance", page_icon="🏆", layout="wide")
+apply_theme()
 
 @st.cache_resource
 def get_everything():

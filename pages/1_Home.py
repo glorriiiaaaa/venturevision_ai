@@ -5,59 +5,25 @@ Project overview, business problem, dataset information.
 
 import streamlit as st
 import pandas as pd
-import os
+import os, sys
 
 st.set_page_config(page_title="VentureVision AI", page_icon="🚀", layout="wide")
 
-# ── Shared CSS ────────────────────────────────────────────────────────────────
-st.markdown(
-    """
-    <style>
-    .metric-card {
-        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-        border: 1px solid #0f3460;
-        border-radius: 12px;
-        padding: 20px;
-        text-align: center;
-        color: white;
-    }
-    .metric-card h2 { color: #e94560; font-size: 2rem; margin: 0; }
-    .metric-card p  { color: #a8b2d8; margin: 4px 0 0 0; }
-    .hero {
-        background: linear-gradient(135deg, #0f3460 0%, #16213e 50%, #1a1a2e 100%);
-        border-radius: 16px;
-        padding: 40px;
-        text-align: center;
-        color: white;
-        margin-bottom: 24px;
-    }
-    .hero h1 { font-size: 2.8rem; margin-bottom: 8px; }
-    .hero p  { font-size: 1.1rem; color: #a8b2d8; }
-    .pill {
-        display: inline-block;
-        background: #e94560;
-        color: white;
-        border-radius: 20px;
-        padding: 4px 14px;
-        font-size: 0.85rem;
-        margin: 3px;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+from utils.theme import apply_theme
+apply_theme()
 
 # ── Hero banner ───────────────────────────────────────────────────────────────
 st.markdown(
     """
-    <div class="hero">
+    <div class="neu-hero">
         <h1>🚀 VentureVision AI</h1>
         <p>Startup Outcome Prediction &amp; Decision Support System</p>
         <p>
-            <span class="pill">IPO Prediction</span>
-            <span class="pill">Acquisition Analysis</span>
-            <span class="pill">Failure Risk</span>
-            <span class="pill">AI Insights</span>
+            <span class="neu-pill">IPO Prediction</span>
+            <span class="neu-pill">Acquisition Analysis</span>
+            <span class="neu-pill">Failure Risk</span>
+            <span class="neu-pill">AI Insights</span>
         </p>
     </div>
     """,
@@ -67,13 +33,13 @@ st.markdown(
 # ── Metrics row ───────────────────────────────────────────────────────────────
 c1, c2, c3, c4 = st.columns(4)
 with c1:
-    st.markdown('<div class="metric-card"><h2>100K</h2><p>Training Samples</p></div>', unsafe_allow_html=True)
+    st.markdown('<div class="neu-metric"><h2>100K</h2><p>Training Samples</p></div>', unsafe_allow_html=True)
 with c2:
-    st.markdown('<div class="metric-card"><h2>3</h2><p>Outcome Classes</p></div>', unsafe_allow_html=True)
+    st.markdown('<div class="neu-metric"><h2>3</h2><p>Outcome Classes</p></div>', unsafe_allow_html=True)
 with c3:
-    st.markdown('<div class="metric-card"><h2>4</h2><p>ML Models Trained</p></div>', unsafe_allow_html=True)
+    st.markdown('<div class="neu-metric"><h2>4</h2><p>ML Models Trained</p></div>', unsafe_allow_html=True)
 with c4:
-    st.markdown('<div class="metric-card"><h2>73.2%</h2><p>Best Accuracy</p></div>', unsafe_allow_html=True)
+    st.markdown('<div class="neu-metric"><h2>73.2%</h2><p>Best Accuracy</p></div>', unsafe_allow_html=True)
 
 st.markdown("---")
 
@@ -149,10 +115,10 @@ for col, (icon, title, desc) in zip([n1, n2, n3, n4, n5], pages):
     with col:
         st.markdown(
             f"""
-            <div style="background:#16213e;border-radius:10px;padding:14px;text-align:center;color:white;height:110px">
-                <div style="font-size:1.8rem">{icon}</div>
-                <div style="font-weight:bold;font-size:0.9rem">{title}</div>
-                <div style="font-size:0.75rem;color:#a8b2d8;margin-top:4px">{desc}</div>
+            <div class="neu-nav">
+                <div class="ico">{icon}</div>
+                <div class="t">{title}</div>
+                <div class="d">{desc}</div>
             </div>
             """,
             unsafe_allow_html=True,

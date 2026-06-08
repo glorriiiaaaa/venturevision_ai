@@ -13,8 +13,10 @@ from utils.model_utils import (
     load_model, predict_proba, generate_insights,
     get_feature_importance, plot_feature_importance,
 )
+from utils.theme import apply_theme
 
 st.set_page_config(page_title="AI Insights", page_icon="💡", layout="wide")
+apply_theme()
 
 # ── Load resources ─────────────────────────────────────────────────────────────
 @st.cache_resource
@@ -82,8 +84,8 @@ colour_map = {"IPO": "#2ecc71", "Acquisition": "#3498db", "Failure": "#e74c3c"}
 
 st.markdown(
     f"""
-    <div style="background:{colour_map[top_class]}22;border:2px solid {colour_map[top_class]};
-                border-radius:12px;padding:16px;text-align:center;margin-bottom:20px">
+    <div class="neu-card" style="text-align:center;margin-bottom:20px;
+                border-left:8px solid {colour_map[top_class]}">
         <b style="color:{colour_map[top_class]};font-size:1.2rem">
             Current Prediction: {top_class} ({proba[top_class]:.1%} confidence)
         </b>

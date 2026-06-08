@@ -19,8 +19,10 @@ from utils.eda import (
     plot_revenue_by_sector,
     plot_burn_rate,
 )
+from utils.theme import apply_theme
 
 st.set_page_config(page_title="Analytics Dashboard", page_icon="📈", layout="wide")
+apply_theme()
 
 DATA_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "startup_success_dataset.csv")
 

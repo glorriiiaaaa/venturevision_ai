@@ -3,3 +3,12 @@ address = "0.0.0.0"
 headless = true
 enableCORS = false
 enableXsrfProtection = false
+
+[theme]
+# Default (light) neumorphic palette — runtime CSS adds the dark variant + toggle
+base = "light"
+primaryColor = "#e8476a"
+backgroundColor = "#e4e9f2"
+secondaryBackgroundColor = "#e4e9f2"
+textColor = "#37436b"
+font = "sans serif"

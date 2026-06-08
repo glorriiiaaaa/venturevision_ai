@@ -11,23 +11,10 @@ import os, sys
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 from utils.preprocessing import load_transformers, preprocess_single_input
 from utils.model_utils import load_model, predict_proba
+from utils.theme import apply_theme
 
 st.set_page_config(page_title="Startup Predictor", page_icon="🔮", layout="wide")
-
-st.markdown(
-    """
-    <style>
-    .prob-card {
-        border-radius: 14px;
-        padding: 20px;
-        text-align: center;
-        color: white;
-        font-size: 1.1rem;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
+apply_theme()
 
 # ── Load model & transformers (cached) ───────────────────────────────────────
 @st.cache_resource
@@ -106,11 +93,13 @@ if submitted:
 
     st.markdown(
         f"""
-        <div style="background:{colour_map[top_class]};border-radius:14px;
-                    padding:20px;text-align:center;color:white;margin-bottom:20px">
-            <h2 style="margin:0">{emoji_map[top_class]} Predicted Outcome: {top_class}</h2>
-            <p style="margin:4px 0 0 0;font-size:1.1rem">
-                Confidence: {proba[top_class]:.1%}
+        <div class="neu-card" style="text-align:center;margin-bottom:20px;
+                    border-left:8px solid {colour_map[top_class]}">
+            <h2 style="margin:0;color:{colour_map[top_class]}">
+                {emoji_map[top_class]} Predicted Outcome: {top_class}
+            </h2>
+            <p style="margin:6px 0 0 0;font-size:1.1rem;color:var(--muted)">
+                Confidence: <b style="color:{colour_map[top_class]}">{proba[top_class]:.1%}</b>
             </p>
         </div>
         """,
@@ -128,7 +117,7 @@ if submitted:
             colour = colour_map[cls]
             st.markdown(
                 f"""
-                <div class="prob-card" style="background:{colour}22;border:2px solid {colour}">
+                <div class="prob-card" style="border-top:5px solid {colour}">
                     <div style="font-size:2rem">{emoji_map[cls]}</div>
                     <div style="font-weight:bold;color:{colour}">{cls}</div>
                     <div style="font-size:2rem;font-weight:bold;color:{colour}">{prob:.1%}</div>
